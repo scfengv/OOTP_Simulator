@@ -11,7 +11,7 @@ def main():
     batter_col = df.columns
     First_game = True  # Start w/ the START SCREEN
 
-    for file_index in df.index[1:100]:
+    for file_index in df.index[122:150]:
         if First_game:
             FirstGame_specialized_start(file_index)
             First_game = False

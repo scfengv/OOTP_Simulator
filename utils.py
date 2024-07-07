@@ -59,10 +59,11 @@ congrat_ok = (888, 560)
 manager_of_the_year_nice = (972, 699)
 
 def customized_sleep():
-    time.sleep(1)
+    time.sleep(1.1)
 
 def auto_click(module):
     pyautogui.click(module[0], module[1], clicks = 2)
+    pyautogui.click(module[0] + 1, module[1], clicks = 2) ## Double check cause the game is really written poorly
 
 def FirstGame_specialized_start(file_index):
     auto_click(random_place)
@@ -100,7 +101,8 @@ def create_new_game_in_TEAMInterface_and_type_in_name(file_index):
     auto_click(file_button)
     customized_sleep()
 
-    auto_click(quickstart_games)
+    # auto_click(quickstart_games)
+    pyautogui.click(quickstart_games[0], quickstart_games[1])
     customized_sleep()
 
     auto_click(start_new_quickstart_game)
