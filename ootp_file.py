@@ -6,15 +6,15 @@ class OOTPFile:
     What this code will do
     - Check if OOTP games were properly run during the simulation
     - Change csv folders name to 40320_xxxxx
-    - Move all the csv folders to organized_path (let you to upload them at once)
+    - Move all the csv folders to organized_path (let you upload them at once)
 
     Workflow
     0. Loop through all the folders in saved_game
     1. Find "40320_xxxxx.lg" folder
     2. Check if game properly run
-    -> Check if /40320_xxxxx.lg/dump/dump_2024_03/csv/games.csv lines == 2 (col. name and game stats)
-    3. If Yes: 
-        - Change csv name to 40320_xxxxx 
+    -> Check if /40320_xxxxx.lg/dump/dump_2024_03/csv/games.csv lines == 2 (col. name & game stats)
+    3. If Yes:
+        - Change csv folder name to 40320_xxxxx 
         - Move csv folder to designated folder
        else: 
         - print("Game 40320_xxxxx did not properly run")
@@ -35,7 +35,6 @@ class OOTPFile:
         self.lg_folder_name = None
         self.lg_folder_path = None
         self.csv_folder_path = None
-        self.csv_file = None
         self.if_lg_folder = False
         self.proper_run = False
     
