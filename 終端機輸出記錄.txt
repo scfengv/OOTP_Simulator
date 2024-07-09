@@ -1,0 +1,67 @@
+(ootp) shenchingfeng@Durrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ootp % python ootp_simulator.py
+Sucessful identify NEW QUICKSTART GAME
+
+Sucessful identify LOAD QUICKSTART GAME
+
+Sucessful identify SET UP YOUR MANAGER
+
+Sucessful identify Team Home Screen
+
+Sucessful identify OVERVIEW
+
+Sucessful identify Finish Today!
+
+Word: Attention!
+Identify word: 
+Sucessful identify Attention!
+
+Sucessful identify 
+
+Sucessful identify Finish Today!
+
+Word: Attention!
+Identify word: 
+Sucessful identify Attention!
+
+Sucessful identify 
+
+Sucessful identify Finish Today!
+
+Word: CONGRATULATIONS!
+Identify word: 
+Sucessful identify CONGRATULATIONS!
+
+Sucessful identify Attention!
+
+Sucessful identify 
+
+Sucessful identify Finish Today!
+
+Word: CONGRATULATIONS!
+Identify word: GB
+Sucessful identify CONGRATULATIONS!
+
+Sucessful identify 
+
+Sucessful identify OOTP Start Screen
+
+Sucessful identify Start New Quickstart Game
+
+Sucessful identify LOAD QUICKSTART GAME
+
+Word: SET UP YOUR MANAGER
+Identify word: UPR Misy WETS EK.
+Word: SET UP YOUR MANAGER
+Identify word: UPR Misy WETS EK.
+Word: SET UP YOUR MANAGER
+Identify word: EPR Wey WS EK.
+Word: SET UP YOUR MANAGER
+Identify word: UPR Misy WETS EK.
+Word: SET UP YOUR MANAGER
+Identify word: UPR Misy WETS EK.
+Sucessful identify SET UP YOUR MANAGER
+
+Sucessful identify Team Home Screen
+
+Sucessful identify OVERVIEW
+(ootp) shenchingfeng@Durrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ootp % 
