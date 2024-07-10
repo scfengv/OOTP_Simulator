@@ -159,6 +159,7 @@ class Click:
         self.click_success = False
         self.failures = 0
         self.max_failures = max_failures
+        self.create_game_time = 60
     
     def _auto_click(self):
         ## Adjust setting fit your computer
@@ -209,7 +210,7 @@ def normal_click(position):
     pyautogui.click(position[0], position[1], clicks = 2)
     pyautogui.click(position[0] + 1, position[1], clicks = 2)
 
-def FirstGame_specialized_start(file_index):
+def FirstGame_specialized_start(file_index, create_game_time):
     auto_click_random_place()
     auto_click(FirstGame_new_game)
     auto_click(FirstGame_start_new_quickstart_game)
@@ -225,7 +226,7 @@ def FirstGame_specialized_start(file_index):
 
     normal_click(create_game.position)
     create_game_clicker = Click(create_game)
-    time.sleep(60)
+    time.sleep(create_game_time)
 
     while not create_game_clicker.click_success:
         create_game_clicker._identify_word()
@@ -239,7 +240,7 @@ def FirstGame_specialized_start(file_index):
     time.sleep(3)
 
 
-def create_new_game_in_TEAMInterface_and_type_in_name(file_index):
+def create_new_game_in_TEAMInterface_and_type_in_name(file_index, create_game_time):
     auto_click_random_place()
     auto_click(file_button)
     auto_click(quickstart_games)
@@ -256,7 +257,7 @@ def create_new_game_in_TEAMInterface_and_type_in_name(file_index):
 
     normal_click(create_game.position)
     create_game_clicker = Click(create_game)
-    time.sleep(60)
+    time.sleep(create_game_time)
     while not create_game_clicker.click_success:
         create_game_clicker._identify_word()
         if not create_game_clicker.click_success:
@@ -297,6 +298,21 @@ def press_play():
         if first_attention_ok_clicker.click_success:
             time.sleep(0.5)
             enter()
+            time.sleep(0.5)
+
+            while True:
+                first_attention_ok_clicker._identify_word()
+                if first_attention_ok_clicker.click_success:
+                    print("Word still identified after pressing enter, pressing enter again.")
+                    enter()
+                    time.sleep(0.5)
+                    
+                else:
+                    print("Word no longer identified after pressing enter.")
+                    print("")
+                    break
+            break
+
         else:
             time.sleep(1)
 
@@ -310,6 +326,21 @@ def press_play():
         if personal_message_ok_clicker.click_success:
             time.sleep(0.5)
             enter()
+            time.sleep(0.5)
+
+            while True:
+                personal_message_ok_clicker._identify_word()
+                if personal_message_ok_clicker.click_success:
+                    print("Word still identified after pressing enter, pressing enter again.")
+                    enter()
+                    time.sleep(0.5)
+                    
+                else:
+                    print("Word no longer identified after pressing enter.")
+                    print("")
+                    break
+            break
+
         else:
             time.sleep(1)
 
@@ -323,6 +354,21 @@ def press_play():
         if congrat_nice_clicker.click_success:
             time.sleep(0.5)
             enter()
+            time.sleep(0.5)
+
+            while True:
+                congrat_nice_clicker._identify_word()
+                print("Word still identified after pressing enter, pressing enter again.")
+                if congrat_nice_clicker.click_success:
+                    enter()
+                    time.sleep(0.5)
+
+                else:
+                    print("Word no longer identified after pressing enter.")
+                    print("")
+                    break
+            break
+
         else:
             time.sleep(1)
 
@@ -332,6 +378,21 @@ def press_play():
         if congrat_ok_clicker.click_success:
             time.sleep(0.5)
             enter()
+            time.sleep(0.5)
+
+            while True:
+                congrat_ok_clicker._identify_word()
+                if congrat_ok_clicker.click_success:
+                    print("Word still identified after pressing enter, pressing enter again.")
+                    enter()
+                    time.sleep(0.5)
+
+                else:
+                    print("Word no longer identified after pressing enter.")
+                    print("")
+                    break
+            break
+
         else:
             time.sleep(1)  
 
@@ -345,6 +406,21 @@ def press_play():
         if manager_of_the_year_nice_clicker.click_success:
             time.sleep(0.5)
             enter()
+            time.sleep(0.5)
+
+            while True:
+                manager_of_the_year_nice_clicker._identify_word()
+                if manager_of_the_year_nice_clicker.click_success:
+                    print("Word still identified after pressing enter, pressing enter again.")
+                    enter()
+                    time.sleep(0.5)
+
+                else:
+                    print("Word no longer identified after pressing enter.")
+                    print("")
+                    break
+            break
+        
         else:
             time.sleep(1)
 

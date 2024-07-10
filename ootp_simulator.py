@@ -1,5 +1,7 @@
+import gc
 import pandas as pd
 from utils import *
+from ootp_file import ootp_file
 
 def main():
     division_path = "/Users/shenchingfeng/Downloads/ootp/40320_part9.csv"
@@ -10,43 +12,61 @@ def main():
     df.set_index("file", inplace = True)
     batter_col = df.columns
     First_game = True  # Start w/ the START SCREEN
+    create_game_time = 60
+    start_game = 251
 
-    for file_index in df.index[159:160]:
-        if First_game:
-            FirstGame_specialized_start(file_index)
-            First_game = False
-        else:
-            create_new_game_in_TEAMInterface_and_type_in_name(file_index)
-        
-        alter_starting_lineup()
+    while True:
+        for file_index in df.index[start_game:start_game + 1]:
+            print(f"===== Game {file_index[6:]} =====")
+            if First_game:
+                st = time.time()
+                FirstGame_specialized_start(file_index, create_game_time - 5)
+                et = time.time()
+                d = int(et - st)
+                First_game = False
+            else:
+                st = time.time()
+                create_new_game_in_TEAMInterface_and_type_in_name(file_index, create_game_time - 5)
+                et = time.time()
+                d = int(et - st)
 
-        # Algorithm to auto lineup
-        batter_sequence = []
-        player_sequence = []
-        for b in batter_col:
-            batter = df.loc[file_index, b].split(' ', 1)
-            batter_sequence.append(int(batter[0]))
-            player_sequence.append(str(batter[1]))
+            create_game_time = d
             
-        # A dictionary to track the current positions of each player
-        current_positions = {i: i for i in range(1, 10)}
+            alter_starting_lineup()
 
-        for i in range(len(batter_sequence)):
-            target_player = batter_sequence[i]
-            current_pos = current_positions[target_player]
-            desired_pos = i + 1
+            # Algorithm to auto lineup
+            batter_sequence = []
+            player_sequence = []
+            for b in batter_col:
+                batter = df.loc[file_index, b].split(' ', 1)
+                batter_sequence.append(int(batter[0]))
+                player_sequence.append(str(batter[1]))
+                
+            # A dictionary to track the current positions of each player
+            current_positions = {i: i for i in range(1, 10)}
 
-            if current_pos != desired_pos:
+            for i in range(len(batter_sequence)):
+                target_player = batter_sequence[i]
+                current_pos = current_positions[target_player]
+                desired_pos = i + 1
 
-                # Find which player is currently at the desired position
-                player_at_desired_pos = next(player for player, pos in current_positions.items() if pos == desired_pos)
+                if current_pos != desired_pos:
 
-                MovePlayer(target_player, player_left, current_pos, desired_pos)
-                current_positions[target_player] = desired_pos
-                current_positions[player_at_desired_pos] = current_pos
+                    # Find which player is currently at the desired position
+                    player_at_desired_pos = next(player for player, pos in current_positions.items() if pos == desired_pos)
 
-        # detect_sequence(player_sequence[1:-1])
-        press_play()
+                    MovePlayer(target_player, player_left, current_pos, desired_pos)
+                    current_positions[target_player] = desired_pos
+                    current_positions[player_at_desired_pos] = current_pos
+
+            press_play()
+            gc.collect()
+            start_game += 1
+
+            if start_game % 50 == 0:
+                ootp_file()
+                print(f"Move and Delete Game files before {start_game}")
+                print("")
 
 if __name__ == "__main__":
     main()
