@@ -101,13 +101,13 @@ def ootp_file():
     base_dir = '/Users/shenchingfeng/Library/Containers/com.ootpdevelopments.ootp25macqlm/Data/Application Support/Out of the Park Developments/OOTP Baseball 25/saved_games'
     organized_path = '/Users/shenchingfeng/Downloads/organized_csv'
     
-    for item in os.listdir(base_dir)[:-1]:
+    for item in os.listdir(base_dir):
         file_operator = OOTPFile(base_dir, organized_path, item)
         file_operator.find_lg_folder()
         file_operator.check_game()
         file_operator.move_game()
 
-    file_operator.remove_lg_folders()
+    # file_operator.remove_lg_folders()
     
 if __name__ == "__main__":
     ootp_file()

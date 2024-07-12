@@ -12,35 +12,25 @@ def main():
     df.set_index("file", inplace = True)
     batter_col = df.columns
     First_game = True  # Start w/ the START SCREEN
-    create_game_time = 60
-    start_game = 251
+    start_game = 517
 
     while True:
         for file_index in df.index[start_game:start_game + 1]:
             print(f"===== Game {file_index[6:]} =====")
             if First_game:
-                st = time.time()
-                FirstGame_specialized_start(file_index, create_game_time - 5)
-                et = time.time()
-                d = int(et - st)
+                FirstGame_specialized_start(file_index)
                 First_game = False
-            else:
-                st = time.time()
-                create_new_game_in_TEAMInterface_and_type_in_name(file_index, create_game_time - 5)
-                et = time.time()
-                d = int(et - st)
 
-            create_game_time = d
+            else:
+                create_new_game_in_TEAMInterface_and_type_in_name(file_index)
             
             alter_starting_lineup()
 
             # Algorithm to auto lineup
             batter_sequence = []
-            player_sequence = []
             for b in batter_col:
                 batter = df.loc[file_index, b].split(' ', 1)
                 batter_sequence.append(int(batter[0]))
-                player_sequence.append(str(batter[1]))
                 
             # A dictionary to track the current positions of each player
             current_positions = {i: i for i in range(1, 10)}
@@ -63,7 +53,7 @@ def main():
             gc.collect()
             start_game += 1
 
-            if start_game % 50 == 0:
+            if start_game % 100 == 0:
                 ootp_file()
                 print(f"Move and Delete Game files before {start_game}")
                 print("")

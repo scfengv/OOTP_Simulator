@@ -185,9 +185,11 @@ class Click:
             print(f"Word: {self.word}")
             print(f"Identify word: {self.identify_word}")
             self.click_success = False
-            self.failures += 1
-            if self.failures >= self.max_failures:
-                self.terminate_simulator()
+
+            if self.item != create_game:
+                self.failures += 1
+                if self.failures >= self.max_failures:
+                    self.terminate_simulator()
 
     def terminate_simulator(self):
         raise SystemExit(f"Simulator terminated because unable to identify {self.word}.")
@@ -199,7 +201,7 @@ def auto_click(item):
         clicker._auto_click()
         customized_sleep()
         clicker._identify_word()
-    
+
 def auto_click_random_place():
     pyautogui.click(random_place[0], random_place[1])
 
@@ -210,7 +212,9 @@ def normal_click(position):
     pyautogui.click(position[0], position[1], clicks = 2)
     pyautogui.click(position[0] + 1, position[1], clicks = 2)
 
-def FirstGame_specialized_start(file_index, create_game_time):
+
+
+def FirstGame_specialized_start(file_index):
     auto_click_random_place()
     auto_click(FirstGame_new_game)
     auto_click(FirstGame_start_new_quickstart_game)
@@ -226,7 +230,7 @@ def FirstGame_specialized_start(file_index, create_game_time):
 
     normal_click(create_game.position)
     create_game_clicker = Click(create_game)
-    time.sleep(create_game_time)
+    time.sleep(70)
 
     while not create_game_clicker.click_success:
         create_game_clicker._identify_word()
@@ -240,7 +244,7 @@ def FirstGame_specialized_start(file_index, create_game_time):
     time.sleep(3)
 
 
-def create_new_game_in_TEAMInterface_and_type_in_name(file_index, create_game_time):
+def create_new_game_in_TEAMInterface_and_type_in_name(file_index):
     auto_click_random_place()
     auto_click(file_button)
     auto_click(quickstart_games)
@@ -257,7 +261,7 @@ def create_new_game_in_TEAMInterface_and_type_in_name(file_index, create_game_ti
 
     normal_click(create_game.position)
     create_game_clicker = Click(create_game)
-    time.sleep(create_game_time)
+    time.sleep(70)
     while not create_game_clicker.click_success:
         create_game_clicker._identify_word()
         if not create_game_clicker.click_success:
@@ -290,13 +294,12 @@ def press_play():
     auto_click_random_place()
     auto_click(play_button)
     auto_click(sim_till_next_month_attention1)
-    time.sleep(1)
+    # time.sleep(1)
 
     first_attention_ok_clicker = Click(first_attention_ok)
     while not first_attention_ok_clicker.click_success: 
         first_attention_ok_clicker._identify_word()
         if first_attention_ok_clicker.click_success:
-            time.sleep(0.5)
             enter()
             time.sleep(0.5)
 
@@ -314,17 +317,16 @@ def press_play():
             break
 
         else:
-            time.sleep(1)
+            pass
 
     auto_click(play_button)
     auto_click(sim_till_next_month_attention2)
-    time.sleep(1)
+    # time.sleep(1)
 
     personal_message_ok_clicker = Click(personal_message_ok)
     while not personal_message_ok_clicker.click_success: 
         personal_message_ok_clicker._identify_word()
         if personal_message_ok_clicker.click_success:
-            time.sleep(0.5)
             enter()
             time.sleep(0.5)
 
@@ -342,17 +344,16 @@ def press_play():
             break
 
         else:
-            time.sleep(1)
+            pass
 
     auto_click(play_button)
     auto_click(sim_till_next_month_congrat)
-    time.sleep(1)
+    # time.sleep(1)
 
     congrat_nice_clicker = Click(congrat_nice)
     while not congrat_nice_clicker.click_success: 
         congrat_nice_clicker._identify_word()
         if congrat_nice_clicker.click_success:
-            time.sleep(0.5)
             enter()
             time.sleep(0.5)
 
@@ -370,13 +371,12 @@ def press_play():
             break
 
         else:
-            time.sleep(1)
+            pass
 
     congrat_ok_clicker = Click(congrat_ok)
     while not congrat_ok_clicker.click_success: 
         congrat_ok_clicker._identify_word()
         if congrat_ok_clicker.click_success:
-            time.sleep(0.5)
             enter()
             time.sleep(0.5)
 
@@ -394,17 +394,16 @@ def press_play():
             break
 
         else:
-            time.sleep(1)  
+            pass
 
     auto_click(play_button)
     auto_click(sim_till_next_month_manager_of_the_year)
-    time.sleep(1)
+    # time.sleep(1)
 
     manager_of_the_year_nice_clicker = Click(manager_of_the_year_nice)
     while not manager_of_the_year_nice_clicker.click_success: 
         manager_of_the_year_nice_clicker._identify_word()
         if manager_of_the_year_nice_clicker.click_success:
-            time.sleep(0.5)
             enter()
             time.sleep(0.5)
 
@@ -422,7 +421,7 @@ def press_play():
             break
         
         else:
-            time.sleep(1)
+            pass
 
     customized_sleep()
 
