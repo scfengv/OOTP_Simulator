@@ -107,7 +107,7 @@ def ootp_file():
         file_operator.check_game()
         file_operator.move_game()
 
-    file_operator.remove_lg_folders()
+    # file_operator.remove_lg_folders()
     
 if __name__ == "__main__":
     ootp_file()
