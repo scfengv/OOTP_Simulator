@@ -12,7 +12,7 @@ def main():
     df.set_index("file", inplace = True)
     batter_col = df.columns
     First_game = True  # Start w/ the START SCREEN
-    start_game = 1128
+    start_game = 62
 
     while True:
         for file_index in df.index[start_game:start_game + 1]:
